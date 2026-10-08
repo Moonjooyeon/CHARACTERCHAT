@@ -5,7 +5,7 @@ root = pathlib.Path(__file__).resolve().parents[1]
 raw = (subprocess.check_output(['git','-C',str(source),'show',f'{commit}:app/app/lib/data.ts'],text=True) if commit else (source/'app/lib/data.ts').read_text())
 start=raw.index('export const sampleWorks:Work[]=')+len('export const sampleWorks:Work[]=')
 works,end=json.JSONDecoder().raw_decode(raw[start:])
-allowed=('id','title','hook','tag','desc','world','audience','keywords','cover')
+allowed=('id','title','hook','tag','desc','world','audience','keywords','cover','creatorGuide')
 public=[]
 for work in works:
     p={k:work[k] for k in allowed if k in work}

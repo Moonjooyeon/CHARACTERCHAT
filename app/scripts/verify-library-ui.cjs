@@ -6,7 +6,7 @@ const noop=()=>{},p={id:'p',name:'밤의 기록관',content:'이름: 기록관\n
 function view(Component,props,overrides={}){globalThis.__redesignState=overrides;return render(React.createElement(Component,props))}
 const props={data:{personas:[p],templates:[t],sharedTemplates:[]},onChange:noop,onError:noop,onNotice:noop};
 let html=view(Library,props);for(const text of ['나의 설정집','밤의 기록관','미리보기 · 편집','복제','보관함'])assert.ok(html.includes(text),text);
-html=view(Library,props,{tab:'personas',draft:p});for(const text of ['기존 대화의 페르소나는 바뀌지','목표','외형','경계','페르소나 이름'])assert.ok(html.includes(text),text);
+html=view(Library,props,{tab:'personas',draft:p});for(const text of ['기존 대화의 페르소나는 바뀌지','목표','이야기 속 나','페르소나 이름'])assert.ok(html.includes(text),text);
 html=view(Library,props,{tab:'templates',draft:t,share:true});for(const text of ['저장된 버전을 공유','다른 이용자가 가져간 사본','공유 대상과 내용을 확인','이용자에게 구성 공유','실제 상태 값'])assert.ok(html.includes(text),text);assert.ok(html.match(/disabled=""[^>]*>이용자에게 구성 공유/));
 html=view(Library,props,{tab:'shared'});for(const text of ['공유 상태창','아직 공유된 상태창이 없어요','사이트 자체의 공개 범위는 바뀌지'])assert.ok(html.includes(text),text);assert.ok(!html.includes('온서 기본 상태창'));html=view(Library,props,{tab:'templates'});assert.ok(html.includes('온서 기본 상태창에서 시작하기'));
 html=view(TemplateLibraryTools,{fields:t.fields,onApply:noop},{open:true,data:props.data,selected:'t'});assert.ok(html.includes('현재 상태 값은 그대로'));assert.ok(html.includes('이 구성 적용'));

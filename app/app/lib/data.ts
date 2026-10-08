@@ -4,7 +4,8 @@ import {previousSeedDialogue} from './previous-seed-dialogue';
 export type ResponseRules={ooc:string;style:string;length:'short'|'balanced'|'long';perspective:string};
 export type Character={id?:string;name:string;age:number|null;ageLabel?:string;portrait?:string;role:string;personality:string};
 export type Opening={title:string;text:string;suggestions:string[]};
-export type Work={id:string;revision?:number;authorName?:string;title:string;tag:string;hook?:string;desc:string;world:string;secret:string;characters:Character[];openings:Opening[];cover:string;status:'draft'|'catalog';archived?:boolean;audience?:'남성향'|'여성향'|'공통';keywords?:string[];sampleReplies?:string[];sampleTurns?:{characterId:string;content:string}[];kind?:'simulation';rating?:'19+'|'all';updated?:string;created?:string;responseRules?:ResponseRules;statusTemplate?:StatusField[];trackerName?:string};
+export type CreatorGuide={settings:string[];models:{name:string;purpose:string;note:string}[]};
+export type Work={creatorGuide?:CreatorGuide;id:string;revision?:number;authorName?:string;title:string;tag:string;hook?:string;desc:string;world:string;secret:string;characters:Character[];openings:Opening[];cover:string;status:'draft'|'catalog';archived?:boolean;audience?:'남성향'|'여성향'|'공통';keywords?:string[];sampleReplies?:string[];sampleTurns?:{characterId:string;content:string}[];kind?:'simulation';rating?:'19+'|'all';updated?:string;created?:string;responseRules?:ResponseRules;statusTemplate?:StatusField[];trackerName?:string};
 import { legacySampleWorks } from './legacy-samples';
 export { legacySampleWorks } from './legacy-samples';
 const characterCovers=Array.from({length:29},(_,i)=>`/characters/character-${String(i+1).padStart(2,'0')}.${i===26?'svg':'webp'}`);
@@ -61,7 +62,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-01.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「세 번째 빵 배달차」에서 시작하세요. 한소리와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "한소리와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "한소리와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-silver",
@@ -113,7 +133,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-02.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「잔받침 아래의 이름」에서 시작하세요. 유설하와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "유설하와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "유설하와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-suit",
@@ -166,7 +205,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-03.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「전 상사의 첫 의뢰」에서 시작하세요. 윤재인과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "윤재인과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "윤재인과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-warm",
@@ -218,7 +276,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-04.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「정전 속의 푸른 파도」에서 시작하세요. 한여울과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "한여울과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "한여울과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-ruby",
@@ -270,7 +347,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-05.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「원작에 없던 찢어진 지도」에서 시작하세요. 레아 벨로스와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "레아 벨로스와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "레아 벨로스와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-violet",
@@ -323,7 +419,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-06.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「심사석 한 자리」에서 시작하세요. 도해원과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "도해원과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "도해원과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-muse",
@@ -374,7 +489,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-07.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「백 일 연애의 반품 규정」에서 시작하세요. 차모아와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "차모아와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "차모아와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-dragon",
@@ -426,7 +560,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-21.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「여왕도 거절할 수 없는 조항」에서 시작하세요. 루아나 벨티르와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "루아나 벨티르와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "루아나 벨티르와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-succubus",
@@ -478,7 +631,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-22.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「빈 꿈에서 난 단맛」에서 시작하세요. 벨라 노크스와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "벨라 노크스와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "벨라 노크스와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-gumiho",
@@ -531,7 +703,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-23.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「명단 속 얼굴과 찻잔 두 개」에서 시작하세요. 백아린과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "백아린과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "백아린과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-serpent",
@@ -584,7 +775,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-24.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「싹을 틔우지 말라는 첫 명령」에서 시작하세요. 이샤르와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "이샤르와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "이샤르와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-ram-demon",
@@ -637,7 +847,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-25.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「두 번째 첫 체크인」에서 시작하세요. 마리엘과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "마리엘과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "마리엘과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-cold-editor",
@@ -689,7 +918,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-26.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「쓰지 않은 마지막 문장」에서 시작하세요. 서지안과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "서지안과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "서지안과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-slime",
@@ -739,7 +987,26 @@ export const sampleWorks:Work[]=[
     "audience": "남성향",
     "cover": "/characters/character-27.svg",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「무지개 세 칸의 지각」에서 시작하세요. 포포와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "포포와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "포포와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-unreleased-track",
@@ -791,7 +1058,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-08.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「금지곡의 공동 서명」에서 시작하세요. 우도겸과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "우도겸과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "우도겸과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-anonymous-credit",
@@ -843,7 +1129,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-09.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「삭제한 두 이름」에서 시작하세요. 한서인과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "한서인과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "한서인과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-unwritten-constellation",
@@ -895,7 +1200,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-10.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「인장 아래의 서명」에서 시작하세요. 서문휘와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "서문휘와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "서문휘와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-midnight-postscript",
@@ -947,7 +1271,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-11.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「마지막 줄의 푸른빛」에서 시작하세요. 류온재와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "류온재와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "류온재와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-dual-return-order",
@@ -999,7 +1342,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-12.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「서로 다른 귀환 명령」에서 시작하세요. 서기율과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "서기율과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "서기율과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-storm-return-map",
@@ -1051,7 +1413,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-13.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「끊어진 길 위의 재회」에서 시작하세요. 남태윤과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "남태윤과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "남태윤과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-forgetful-spring",
@@ -1103,7 +1484,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-14.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「꽃이 피기 전에 온 향」에서 시작하세요. 리에른과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "리에른과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "리에른과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-final-curtain-bet",
@@ -1155,7 +1555,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-15.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「희생자란의 자필 서명」에서 시작하세요. 라비오 렌과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "라비오 렌과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "라비오 렌과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-seasonal-engagement",
@@ -1207,7 +1626,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-16.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「종료 조항부터 읽는 약혼」에서 시작하세요. 레오넬 아르케트와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "레오넬 아르케트와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "레오넬 아르케트와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-deer",
@@ -1259,7 +1697,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-17.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「혼인보다 먼저 온 파혼서」에서 시작하세요. 각현과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "각현과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "각현과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-whitesnake",
@@ -1311,7 +1768,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-18.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「첫 명령은 계약서 밖에서」에서 시작하세요. 사휘와 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "사휘와 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "사휘와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-dokkaebi",
@@ -1363,7 +1839,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-19.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「처음이 아닌 첫 내기」에서 시작하세요. 묵람과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "묵람과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "묵람과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-crow",
@@ -1415,7 +1910,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-20.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「서명 대신 남은 삭제선」에서 시작하세요. 노엔과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "노엔과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "노엔과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-quiet-bookbinder",
@@ -1467,7 +1981,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-28.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「악역의 작업등」에서 시작하세요. 서이현과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "서이현과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "서이현과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-female-frail-cartographer",
@@ -1519,7 +2052,26 @@ export const sampleWorks:Work[]=[
     "audience": "여성향",
     "cover": "/characters/character-29.webp",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「전담보다 공동저자」에서 시작하세요. 루시안 에델과 첫 장면의 사건을 함께 겪는 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "루시안 에델과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "같은 사건을 다른 관점에서 바라보는 협력자로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "루시안 에델과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-sim-monstergirl-dorm",
@@ -1616,7 +2168,26 @@ export const sampleWorks:Work[]=[
       "length": "balanced",
       "perspective": "사용자는 인간 주민으로서 자유롭게 선택한다. 성적 묘사 없이 생활 사건·존중·협력을 중심으로 전개하고, 루비는 항상 비연애적 친구 관계로 유지한다."
     },
-    "kind": "simulation"
+    "kind": "simulation",
+    "creatorGuide": {
+      "settings": [
+        "월영관에 막 입주한 인간 주민. 공용 주방과 청소 당번부터 함께 정하며 세 룸메이트의 생활 방식에 익숙해지는 설정.",
+        "주민 대표를 돕는 생활 협력자. 유키의 가전 사용, 세라핀의 야행성 생활, 루비의 소음 문제를 각자의 동의를 구하며 조율하는 설정.",
+        "동네에서 작은 가게를 운영하는 이웃이자 새 룸메이트. 주민들과 우정과 생활 협력을 쌓고, 하루의 작은 소동을 함께 해결하는 설정."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "유키와의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-sim-sentinel-bureau",
@@ -1703,7 +2274,26 @@ export const sampleWorks:Work[]=[
         "characterId": "sentinel-bureau-lucian",
         "content": "“좋아요. 가장 어려운 질문부터 하시네요.” 그가 출입증을 내려놓고 손가락을 하나씩 접는다. “정보, 퇴로, 그리고 사령관님이 빼먹은 설명. 제 몫은 이 셋으로 할까요?”"
       }
-    ]
+    ],
+    "creatorGuide": {
+      "settings": [
+        "「첫 배속, 세 개의 시선」에서 시작하세요. 일행에 새로 합류한 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "카이엘과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "각 인물과 서로 다른 목표를 가진 동료로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "카이엘과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   },
   {
     "id": "sample-sim-villain-academy",
@@ -1788,14 +2378,33 @@ export const sampleWorks:Work[]=[
     ],
     "kind": "simulation",
     "status": "catalog",
-    "secret": ""
+    "secret": "",
+    "creatorGuide": {
+      "settings": [
+        "「명부에 먼저 적힌 이름」에서 시작하세요. 일행에 새로 합류한 인물로, 지금 눈앞의 상황에 어떻게 반응할지 정해 보세요.",
+        "아드리안과 이전부터 알고 지낸 사이로 시작해도 좋아요. 함께한 기억 하나와 아직 말하지 못한 마음을 페르소나에 적어 주세요. 기존 세계관과 충돌하는 관계는 첫 대화에서 조율해 주세요.",
+        "각 인물과 서로 다른 목표를 가진 동료로 시작해 보세요. 원하는 전개와 피하고 싶은 상황을 유저 노트에 적으면 설정을 정리하기 쉬워요."
+      ],
+      "models": [
+        {
+          "name": "Claude Opus",
+          "purpose": "서사 중심",
+          "note": "아드리안과의 관계 변화와 긴 장면을 중심으로 즐기고 싶을 때 선택할 추천 방향입니다. 구체적인 모델 버전·요금은 연결 후 확인해 주세요."
+        },
+        {
+          "name": "Gemini",
+          "purpose": "장면 전개 중심",
+          "note": "대사와 사건을 주고받는 전개를 선호할 때 선택할 추천 방향입니다. 현재는 샘플 대화이며 실제 모델 성능을 보장하는 안내가 아닙니다."
+        }
+      ]
+    }
   }
 ];
 export function portraitMeta(src:string){if(simulationPortraits[src])return {...simulationPortraits[src],label:'시뮬레이션 캐릭터 이미지'};const index=characterCovers.indexOf(src);const positions=['50% 24%','50% 12%','50% 12%','50% 14%','50% 18%','50% 26%','50% 18%','50% 21%','50% 14%','50% 14%','50% 23%','50% 15%','50% 21%','50% 14%','50% 20%','50% 20%','50% 8%','50% 20%','50% 12%','50% 24%','50% 9%','50% 13%','50% 8%','50% 8%','50% 17%','50% 23%','50% 50%','50% 16%','50% 18%'];const dimensions=index===28?[1104,1824]:index===27?[768,1280]:index===26?[768,960]:(index===3||(index>=20&&index<=23))?[768,1280]:[7,9,13,14,15,16,17,18,19,24,25].includes(index)?[1104,1824]:[10,11,12].includes(index)?[1536,2048]:[1248,1600];return {width:index<0?1024:dimensions[0],height:index<0?1536:dimensions[1],position:index<0?'50% 24%':positions[index],label:index===26?'슬라임 캐릭터 · 이미지 준비 중':index<0?'기존 작품 이미지':(sampleWorks.find(w=>w.cover===src)?.characters[0]?.name||'캐릭터 '+(index+1))+' 일러스트'};}
 export const blankWork=():Work=>({id:'',rating:'19+',title:'',tag:'일상',desc:'',world:'',secret:'',characters:[{name:'',age:25,role:'',personality:''}],openings:[{title:'첫 만남',text:'',suggestions:[]}],cover:covers[1],status:'draft'});
 
 export function workRating(w:Work):'19+'|'all'{return w.id==='sample-sori'||w.id==='sample-slime'||w.cover===characterCovers[0]||w.cover===characterCovers[26]?'all':w.rating||'19+';}
-export function normalizedWork(w:Work):Work{return {...w,rating:workRating(w),characters:w.characters.map((c,i)=>({...c,id:c.id||`${w.id}-character-${i}`}))};}
+export function normalizedWork(w:Work):Work{return {...w,creatorGuide:w.creatorGuide||sampleWorks.find(sample=>sample.id===w.id)?.creatorGuide,rating:workRating(w),characters:w.characters.map((c,i)=>({...c,id:c.id||`${w.id}-character-${i}`}))};}
 /** Mark narration in authored seed openings only. Never guess roles in user-written prose. */
 export function sampleNarration(text:string){
  if(text.includes('*'))return text;

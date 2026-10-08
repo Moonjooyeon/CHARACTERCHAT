@@ -1,5 +1,5 @@
 {
-  "source_commit": "f49c9a94176d037d1f50540b4364bac67ccc3728",
+  "source_commit": "working-tree",
   "count": 32,
   "allowed_fields": [
     "id",
@@ -11,6 +11,7 @@
     "audience",
     "keywords",
     "cover",
+    "creatorGuide",
     "author",
     "rating",
     "characters",
