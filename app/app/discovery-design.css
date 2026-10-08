@@ -260,3 +260,5 @@ dialog::backdrop { background: #0009; backdrop-filter: none; }
 .chat-header-tools{flex-shrink:0!important}.chat-header-tools .assets-button{white-space:nowrap;min-width:52px;width:auto;padding-inline:10px}.demo-suggestions{scrollbar-width:none}.demo-suggestions::-webkit-scrollbar{display:none}
 
 @media(max-width:640px){.is-chat .topbar{display:none}.is-chat{padding-bottom:0}.is-chat .chat-layout{height:100dvh;min-height:0}.is-chat .conversation{min-height:0}.is-chat .composer{padding-bottom:max(10px,env(safe-area-inset-bottom))}.is-chat .conversation-header>div:not(.chat-header-tools){flex:1;min-width:0}.is-chat .chat-header-tools{gap:4px}}
+
+.demo-message .dialogue-prose,.message .dialogue-prose{gap:16px}.demo-message .dialogue-block,.message .dialogue-block{margin:0}

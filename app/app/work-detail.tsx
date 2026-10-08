@@ -7,7 +7,7 @@ import {ArrowLeft,MessageCircle,PenLine,LockKeyhole,BookOpen,ChevronRight} from 
 import {workRating,workAuthor,workHook,portraitMeta,type Work} from './lib/data';
 import {characterImage,characterAge} from './lib/simulation-dialogue';
 import {dialogueBlocks} from './lib/dialogue';
-export function Dialogue({text}:{text:string}){return <div className="dialogue-prose">{dialogueBlocks(text).map((p,i)=><p className={'dialogue-block '+(p.action?'action-block':'speech-block')} key={i}>{p.action?<em className="action-text">{p.text}</em>:<span className="dialogue-text">{p.text}</span>}</p>)}</div>}
+export function Dialogue({text}:{text:string}){return <div className="dialogue-prose">{dialogueBlocks(text).map((p,i)=><p className={'dialogue-block '+(p.action?'action-block':'speech-block')} key={i}>{p.action?<em className="action-text">{p.text.replace(/\s*\n\s*/g,' ')}</em>:<span className="dialogue-text">{p.text}</span>}</p>)}</div>}
 export function Rating({work}:{work:Work}){return <span className={'rating '+(workRating(work)==='19+'?'adult':'all')}>{workRating(work)==='19+'?'19+':'전체'}</span>}
 export default function WorkDetail({work:w,opening,setOpening,onBack,onStart,onResume,onEdit,sessions,busy,owned}:{work:Work;opening:number;setOpening:(n:number)=>void;onBack:()=>void;onStart:()=>void;onResume:(id:string)=>void;onEdit:()=>void;sessions:any[];busy:boolean;owned:boolean}){
  const [cast,setCast]=useState(0);

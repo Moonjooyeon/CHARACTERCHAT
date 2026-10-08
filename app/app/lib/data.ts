@@ -2435,7 +2435,7 @@ export function knownAssistantDisplay(work:Work,text:string):string{
  return text;
 }
 
-export const defaultRules=():ResponseRules=>({ooc:'',style:'대사 → 지문 네 문장 안팎 → 대사 → 지문 두세 문장의 호흡으로 쓴다. 지문은 *별표*로 감싸 별도 문단에 둔다. 말투, 손짓, 시선, 주변 소리와 장면의 작은 변화를 구체적으로 묘사한다. 분량을 채우기 위한 반복과 상투적인 감정 해설은 피한다. 사용자의 직전 말에 반응하고 다음 행동을 선택할 여지를 남긴다. 사용자의 행동이나 감정을 대신 확정하지 않는다. 사용자가 짧은 답변을 요청하면 그 요청을 따른다.',length:'balanced',perspective:'캐릭터 중심. 사용자의 행동과 감정을 대신 결정하지 않기'});
+export const defaultRules=():ResponseRules=>({ooc:'',style:'대사 → 지문 네 문장 안팎 → 대사 → 지문 두세 문장의 호흡으로 쓴다. 지문은 *별표*로 감싸 별도 문단에 두되, 문장마다 줄바꿈하지 않고 한 문단의 줄글로 이어 쓴다. 말투, 손짓, 시선, 주변 소리와 장면의 작은 변화를 구체적으로 묘사한다. 분량을 채우기 위한 반복과 상투적인 감정 해설은 피한다. 사용자의 직전 말에 반응하고 다음 행동을 선택할 여지를 남긴다. 사용자의 행동이나 감정을 대신 확정하지 않는다. 사용자가 짧은 답변을 요청하면 그 요청을 따른다.',length:'balanced',perspective:'캐릭터 중심. 사용자의 행동과 감정을 대신 결정하지 않기'});
 export function publicWork(w:Work):Work{const {secret,responseRules,...rest}=normalizedWork(w);return rest as Work;}
 
 export function workAuthor(w:Work){return w.id.startsWith('sample-')?'익명':w.authorName||'나';}
