@@ -17,3 +17,5 @@ node scripts/verify-runtime.mjs
 node scripts/verify-library-runtime.mjs
 
 node scripts/verify-wallet-runtime.mjs
+
+node scripts/verify-attendance-runtime.mjs

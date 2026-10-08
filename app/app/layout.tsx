@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./discovery-design.css";
 
 export const metadata: Metadata = {
   title: "온서 · 이야기가 되는 대화",
