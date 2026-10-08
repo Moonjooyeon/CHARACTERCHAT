@@ -1,0 +1,1 @@
+ALTER TABLE `test_purchases` ADD `acknowledged` integer DEFAULT 0 NOT NULL;

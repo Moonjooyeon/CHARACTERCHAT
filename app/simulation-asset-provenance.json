@@ -1,0 +1,62 @@
+{
+  "assets": [
+    {
+      "characterId": "yuki-04",
+      "path": "/images/simulations/monstergirl-yuki.png",
+      "sha256": "e121d3791e56457902c86d5e22c93f058d279676b775f62e196e92ced14fccb7",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "seraphine-05",
+      "path": "/images/simulations/monstergirl-seraphine.png",
+      "sha256": "54bb5ec67b564dd2a753f4f58c87d191431aa07b7bdf3f7f49606f60a87b975e",
+      "width": 768,
+      "height": 1280
+    },
+    {
+      "characterId": "sentinel-bureau-kaiel",
+      "path": "/images/sentinel-bureau-kaiel.png",
+      "sha256": "259c6595997e40dbfcdcba3e2be40e4a809c75eea26071b75c86b8b95303ba28",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "sentinel-bureau-shion",
+      "path": "/images/sentinel-bureau-shion.png",
+      "sha256": "e58b1a05a93b3b219c8977563b478cac35915e0a62550c8fd57b0a9eda7a4b55",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "sentinel-bureau-lucian",
+      "path": "/images/sentinel-bureau-lucian.png",
+      "sha256": "d598bcbd9e166694072e1b0fb09063ba83c0dc257cfbb574e7a4d060e0aaa66c",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "07",
+      "path": "/images/simulations/villain-academy-adrian.png",
+      "sha256": "7b6c97a4dbe97bb25b21d8f860c985b5c879aee68f8be45693a93584d087e74d",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "08",
+      "path": "/images/simulations/villain-academy-edelin.png",
+      "sha256": "6b8b99c1f5f7505091215d211a9b0dae5ce082bf7f7184939f03d5bc070893ba",
+      "width": 1104,
+      "height": 1824
+    },
+    {
+      "characterId": "09",
+      "path": "/images/simulations/villain-academy-isael.png",
+      "sha256": "c88a98a3e54b2b26b5e431e8ef453d6fcd069e8805b474abf6e2d69de3bef02f",
+      "width": 1104,
+      "height": 1824
+    }
+  ],
+  "withheld": "ruby-06 original omitted; neutral SVG placeholder used",
+  "generatedImages": false
+}

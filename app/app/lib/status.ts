@@ -1,0 +1,3 @@
+import { db } from './db';
+import {cleanStatusData,normalizeStatusTemplate} from './status-fields';
+export async function readStatus(owner:string,sid:string){const r=await db().prepare('SELECT data,revision,updated FROM session_status WHERE owner=? AND session_id=?').bind(owner,sid).first<any>();const stored=r?JSON.parse(r.data):null;return r?{...r,data:cleanStatusData(stored.values||stored),template:stored.template?normalizeStatusTemplate(stored.template):null,tracker:stored.tracker||{enabled:true,source:stored.template?'custom':'creator',name:stored.template?'현재 대화의 트래커':'작품 기본 트래커'},source:'manual'}:{data:cleanStatusData({}),template:null,revision:0,tracker:{enabled:true,source:'creator',name:'작품 기본 트래커'},source:'manual'};}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="960" viewBox="0 0 768 960" role="img" aria-label="이미지 준비 중">
+  <rect width="768" height="960" fill="#edf0f7"/>
+  <circle cx="384" cy="397" r="74" fill="#d9deeb"/>
+  <path d="M355 397h58M384 368v58" stroke="#8793ab" stroke-width="5" stroke-linecap="round"/>
+  <text x="384" y="532" text-anchor="middle" fill="#63718a" font-family="sans-serif" font-size="29">이미지 준비 중</text>
+  <text x="384" y="577" text-anchor="middle" fill="#8b96aa" font-family="sans-serif" font-size="19">얼굴 크롭본을 기다리고 있어요</text>
+</svg>

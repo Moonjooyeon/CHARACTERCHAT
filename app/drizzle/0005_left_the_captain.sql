@@ -1,0 +1,1 @@
+ALTER TABLE `status_templates` ADD `author_name` text DEFAULT '익명 제작자' NOT NULL;

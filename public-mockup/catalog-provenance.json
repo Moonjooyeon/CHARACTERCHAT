@@ -1,0 +1,22 @@
+{
+  "source_commit": "f49c9a94176d037d1f50540b4364bac67ccc3728",
+  "count": 32,
+  "allowed_fields": [
+    "id",
+    "title",
+    "hook",
+    "tag",
+    "desc",
+    "world",
+    "audience",
+    "keywords",
+    "cover",
+    "author",
+    "rating",
+    "characters",
+    "openings",
+    "sampleReplies"
+  ],
+  "assets": "28 approved WebP portraits,8 approved original simulation PNGs,and2neutral SVG placeholders; Ruby original excluded",
+  "storage": "none"
+}

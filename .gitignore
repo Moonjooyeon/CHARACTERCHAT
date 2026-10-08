@@ -1,0 +1,16 @@
+**/node_modules/
+**/.env*
+**/runtime.env
+**/.sites-runtime/
+**/.wrangler/
+**/.next/
+**/.vinext/
+**/*.tsbuildinfo
+**/*.db
+**/*.sqlite*
+**/*.log
+**/.DS_Store
+**/.npm-cache/
+**/coverage/
+app/dist/
+# public-mockup/dist is the authored static application and MUST remain tracked.
