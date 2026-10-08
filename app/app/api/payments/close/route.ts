@@ -1,0 +1,1 @@
+export function GET(){return new Response('<!doctype html><html lang="ko"><meta charset="utf-8"><title>결제 취소</title><p>결제창을 닫았습니다.</p><a href="/" target="_top">온서로 돌아가기</a></html>',{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}})}
