@@ -233,3 +233,4 @@ dialog::backdrop { background: #0009; backdrop-filter: none; }
 
 /* Keep faces in frame in the wide featured banner. */
 .featured-art>img.featured-character{object-position:50% 0%}
+.credit-sources{display:flex;gap:12px;flex-wrap:wrap;padding:14px 0 20px;border-bottom:1px solid #363438;margin-bottom:20px;color:#aaa5ad;font-size:12px}.credit-sources span{display:flex;gap:8px}.credit-sources b{color:#eee}.demo-package:hover{border-color:#e9a6b0;background:#30232a}.wallet-balance strong{font-size:36px;letter-spacing:-1px}

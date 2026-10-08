@@ -31,7 +31,7 @@ async function image(id,query=''){const r=await media.GET(new Request('https://t
  assert.equal((await attendance.readAttendance('other')).grapes,0);
  owner=null;assert.equal((await get('?attendance=1')).status,401);assert.equal((await post('claimAttendance')).status,401);
  owner='api-owner';let result=await post('claimAttendance',{owner:'forged',grapes:99999,day:'2100-01-01'});assert.equal(result.status,200);assert.equal(result.data.grapes,10);assert.equal(result.data.day,attendance.koreaDay());assert.equal((await attendance.readAttendance('forged')).grapes,0);
- result=await post('claimAttendance');assert.equal(result.data.grapes,10);assert.equal((await get('?wallet=1')).data.balance,120);
+ result=await post('claimAttendance');assert.equal(result.data.grapes,10);assert.equal((await get('?wallet=1')).data.balance,130);
  const cross=await api.POST(new Request('https://test.example/api/app',{method:'POST',headers:{Origin:'https://other.test','Content-Type':'application/json'},body:JSON.stringify({action:'claimAttendance'})}));assert.equal(cross.status,403);
- console.log('PASS: KST midnight, concurrent/retried claims, seventh-day award, gaps, owner isolation, forged inputs, auth/origin checks and unchanged ink ledger');
+ console.log('PASS: KST midnight, concurrent/retried claims, seventh-day award, gaps, owner isolation, forged inputs, auth/origin checks and unified credit ledger');
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -9,7 +9,7 @@ export async function claimAttendance(owner:string,now=new Date()) {
  const day=koreaDay(now);
  // A single atomic statement prices and records the award. Retried requests and
  // competing tabs cannot award the same owner/day twice.
- await db().prepare(`INSERT OR IGNORE INTO attendance(owner,day,grapes,created)
- SELECT ?,?,CASE WHEN (COUNT(*)+1)%7=0 THEN 30 ELSE 10 END,? FROM attendance WHERE owner=?`).bind(owner,day,now.toISOString(),owner).run();
+ await db().batch([db().prepare(`INSERT OR IGNORE INTO attendance(owner,day,grapes,created)
+ SELECT ?,?,CASE WHEN (COUNT(*)+1)%7=0 THEN 30 ELSE 10 END,? FROM attendance WHERE owner=?`).bind(owner,day,now.toISOString(),owner),db().prepare(`INSERT OR IGNORE INTO ledger(id,owner,asset_id,delta,created) SELECT 'attendance:'||owner||':'||day,owner,'attendance:'||owner||':'||day,grapes,created FROM attendance WHERE owner=?`).bind(owner)]);
  return readAttendance(owner,now);
 }
