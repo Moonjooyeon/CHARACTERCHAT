@@ -19,6 +19,30 @@ async function image(id,query=''){const r=await media.GET(new Request('https://t
 
 
 (async()=>{
+const provider=load(root+'/app/lib/providers.ts'),dialogue=load(root+'/app/lib/dialogue.ts');
+const catalogText=fs.readFileSync(path.resolve(root,'../public-mockup/dist/catalog.js'),'utf8');
+const catalog=JSON.parse(catalogText.slice(catalogText.indexOf('[')).trim().replace(/;$/,''));
+let proseCount=0;
+for(const work of data.sampleWorks){
+ assert.deepEqual(work.sampleReplies,catalog.find(w=>w.id===work.id).sampleReplies);
+ for(let turn=0;turn<work.sampleReplies.length;turn++){
+  const reply=await provider.sampleChatProvider.reply({work,turn,message:'다음 장면'});
+  const content=work.sampleTurns?reply.slice(reply.indexOf(': ')+2):reply;
+  const parts=dialogue.dialogueBlocks(content);
+  assert.deepEqual(parts.map(p=>p.action),[false,true,false,true],work.id);
+  assert.equal(parts[1].text.split('\n').length,4,work.id);
+  assert.equal(parts[3].text.split('\n').length,3,work.id);
+  proseCount++;
+ }
+}
+const oldSnapshot={...data.sampleWorks[0],sampleReplies:['“유력한 가설이야! …라고 쓰고, 틀리면 같이 지우자.”','“오늘 사건 없으면? 그냥 만나면 되지. 수첩 없이도 친구는 친구니까.”']};
+const oldText=JSON.stringify(oldSnapshot);
+assert.equal(await provider.sampleChatProvider.reply({work:oldSnapshot,turn:0,message:'계속'}),data.sampleWorks[0].sampleReplies[0]);
+assert.equal(JSON.stringify(oldSnapshot),oldText);
+const creatorOverride={...oldSnapshot,sampleReplies:['제작자가 직접 쓴 답변']};
+assert.equal(await provider.sampleChatProvider.reply({work:creatorOverride,turn:0,message:'계속'}),'제작자가 직접 쓴 답변');
+console.log('PASS '+proseCount+' authored responses: dialogue / four action lines / dialogue / three action lines; catalog parity, next-turn upgrade without history mutation, creator override preserved.');
+
 let r=await post('startChat',{workId:'sample-sori'});assert.equal(r.status,200);const sid=r.data.id;
 assert.equal((await get('?characters=1')).data.characters.length,0);
 await post('message',{sessionId:sid,content:'같이 조사하자',requestId:'collect-one'});
