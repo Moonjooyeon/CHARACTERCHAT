@@ -4,7 +4,7 @@ export {templatePresets} from './template-presets';
 export type Persona={id:string;name:string;content:string;revision:number;archived:number;created:string;updated:string};
 export type Template={id:string;name:string;description:string;author_name?:string;fields:StatusField[];visibility:string;source_id?:string;revision:number;archived:number;imports?:number;updated:string};
 // All template writes cross this explicit allowlist. No current status, memory, persona or work setting may travel with a template.
-export function templateFields(value:unknown){if(!Array.isArray(value)||value.length>13)throw Error('상태창 항목을 확인해 주세요.');return normalizeStatusTemplate(value);}
+export function templateFields(value:unknown){if(!Array.isArray(value)||value.length>32)throw Error('상태창 항목을 확인해 주세요.');return normalizeStatusTemplate(value);}
 export async function readLibrary(owner:string){const [p,t,g]=await Promise.all([
  db().prepare('SELECT id,name,content,revision,archived,created,updated FROM personas WHERE owner=? ORDER BY updated DESC').bind(owner).all<Persona>(),
  db().prepare('SELECT id,name,description,fields,author_name,visibility,source_id,revision,archived,updated FROM status_templates WHERE owner=? ORDER BY updated DESC').bind(owner).all<any>(),
