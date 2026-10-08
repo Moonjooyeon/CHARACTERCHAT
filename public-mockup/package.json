@@ -1,1 +1,1 @@
-{"name":"onseo-public-mockup","private":true,"type":"module","scripts":{"test":"node scripts/verify.mjs"}}
+{"name":"onseo-public-mockup","private":true,"type":"module","scripts":{"test":"node scripts/verify.mjs && node scripts/verify-characters.mjs"}}

@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "63d85def-70c4-4c5b-9fd5-c3ea3fad4fc9",
+  "id": "a694aa45-2746-4b7f-8193-3f9722412f76",
   "prevId": "a0001f0f-88b7-4c80-8778-30d35b7c3d60",
   "tables": {
     "age_declarations": {
@@ -110,53 +110,6 @@
             "owner"
           ],
           "isUnique": false
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "attendance": {
-      "name": "attendance",
-      "columns": {
-        "owner": {
-          "name": "owner",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "day": {
-          "name": "day",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "grapes": {
-          "name": "grapes",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "created": {
-          "name": "created",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        }
-      },
-      "indexes": {
-        "attendance_owner_day": {
-          "name": "attendance_owner_day",
-          "columns": [
-            "owner",
-            "day"
-          ],
-          "isUnique": true
         }
       },
       "foreignKeys": {},
@@ -765,6 +718,53 @@
             "owner",
             "session_id",
             "created"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "my_characters": {
+      "name": "my_characters",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner": {
+          "name": "owner",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "data": {
+          "name": "data",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated": {
+          "name": "updated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "my_characters_owner": {
+          "name": "my_characters_owner",
+          "columns": [
+            "owner",
+            "updated"
           ],
           "isUnique": false
         }

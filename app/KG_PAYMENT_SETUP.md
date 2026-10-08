@@ -16,7 +16,7 @@ KG 웹표준 PC 카드 결제 어댑터를 추가했습니다. 기본 비활성 
 - `KG_PACKS_JSON`: 서버 승인 판매상품 배열. 각 항목 `{id,name,units,price}`. price는 원 단위 양의 정수. 임의 운영 가격을 넣지 않았음
 - `KG_LIVE_CONFIRMED`: 운영 계약·판매상품·환불 절차·실환경 검증 완료 후 운영 전환 시 `true`
 
-`0011_cloudy_zemo.sql`을 대상 D1에 적용해야 합니다. 생성된 Drizzle schema와 metadata도 포함됩니다. 이번 작업에서는 운영 DB를 변경하지 않았습니다.
+`0013_cloudy_zemo.sql`을 대상 D1에 적용해야 합니다. 생성된 Drizzle schema와 metadata도 포함됩니다. 이번 작업에서는 운영 DB를 변경하지 않았습니다.
 
 ## 동작
 
