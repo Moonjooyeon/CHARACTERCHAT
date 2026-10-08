@@ -24,6 +24,6 @@ const manifest=JSON.parse(file('.openai/hosting.json'));assert.deepEqual(Object.
 execFileSync(process.execPath,['--check',new URL('../dist/app.js',import.meta.url).pathname]);execFileSync(process.execPath,['--check',new URL('../dist/catalog.js',import.meta.url).pathname]);
 for(const name of ['portraits.js','viewport.js'])execFileSync(process.execPath,['--check',new URL('../dist/'+name,import.meta.url).pathname]);
 assert.match(file('dist/__viewport.html'),/connect-src 'none'/);assert.match(file('dist/__viewport.html'),/noindex,nofollow/);
-console.log(JSON.stringify({checks:'PASS',catalog:works.length,portraits,placeholders,public_files:inventory.length,network_clients:0,bindings:0,storage:'display preferences only; content in memory',project_id:manifest.project_id},null,2));
+console.log(JSON.stringify({checks:'PASS',catalog:works.length,portraits,placeholders,public_files:inventory.length,network_clients:0,bindings:0,storage:'browser-local preview records and display preferences',project_id:manifest.project_id},null,2));
 
-assert.equal((app.match(/localStorage\.getItem\(/g)||[]).length,1);assert.equal((app.match(/localStorage\.setItem\(/g)||[]).length,1);assert(app.includes("JSON.stringify({font:state.font,art:state.art})"));
+assert(app.includes("const contentKey='onseo.preview.v1'"));assert(app.includes("JSON.stringify({font:state.font,art:state.art})"));

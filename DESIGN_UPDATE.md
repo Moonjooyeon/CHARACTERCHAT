@@ -96,3 +96,10 @@
 - 샘플 0, Gemini 3 Flash 4, Gemini 3.1 Pro 8, Claude Sonnet 4.6 10, GPT-5.4 12, Claude Opus 4.7 25 크레딧/답변을 제품 가격안으로 표시합니다. 실제 API 원가나 타 서비스 재화 환율을 의미하지 않습니다.
 - 대화별 모델 선택·저장, 제작자 추천 표시, 비용과 현재 무료 샘플 상태를 함께 표시합니다. API 모델 목록을 서버에서 검증하며 현재 샘플 응답에서 잔액을 차감하지 않습니다.
 - 참고: 케이브덕 공식 모델 가이드의 비용 차등 https://docs.caveduck.io/ko/articles/케이브덕-AI-모델-9646c64f 및 제타 공식 공지의 턴당 비용 안내 https://zeta-ai.io/ko/announcements/9307 . 로판 공개 페이지에서는 상세 모델 요금을 검증하지 못했습니다.
+
+### Usability follow-up — 2026-10-08
+
+- Added direct persona, status-editor, and model/settings entries above the conversation in both clients; labeled the settings button.
+- The static preview now keeps saved conversations, unsent message drafts, persona/status/model choices, collections, local works and attendance ledger in browser-local storage. Refresh restores the current conversation route. This supersedes earlier in-memory-only preview notes. Other devices do not share this data. Storage failure is reported; stale tabs cannot overwrite a newer saved snapshot.
+- Removed the repeated composer disclaimer, corrected storage copy, and increased usable mobile chat height by hiding global navigation during a conversation. Kept the work/back control, fixed wrapped asset labels, enlarged touch targets, and made modal actions reachable at reduced viewport height.
+- Verified in-browser message/draft/status restoration after refresh, 320px and 390px chat layouts with no horizontal document overflow, and status save controls at 440px height. This is viewport testing, not a physical-device keyboard test. State regression tests, static integrity checks, TypeScript, and production build pass.
