@@ -4,9 +4,11 @@ A separate presentation-only Site built from public catalog content and approved
 
 ## Demo boundary
 
+Display preferences (font size and artwork visibility) are stored in this browser under `onseo.display.v1` and shared by all chats and tabs. No conversation or persona content is written to browser storage.
+
 - 32 catalog profiles, including 3 multi-character simulations; 28 approved original character portraits, their 106 proportional transport derivatives, and the existing neutral slime placeholder. Original fallbacks remain unchanged.
 - Source catalog extraction uses an explicit public-field allowlist. No source module is executed.
-- No backend, account, database, object-storage binding, private endpoint, remote provider, cookie, browser storage, analytics, or user-content publishing.
+- No backend, account, database, object-storage binding, private endpoint, remote provider, cookie, analytics, or user-content publishing.
 - Persona, sample chat, tracker, and virtual-credit state exist only in the current page's memory and reset on reload.
 - Dialogue replies are labeled scripted samples. Test checkout displays only virtual credits and a real charge of ₩0. No payment processor, real card fields, receipts, subscription, or charges.
 - Snapshot opens only a confirmation and disabled Generate button.

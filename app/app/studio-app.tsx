@@ -1,5 +1,6 @@
 'use client';
 import CharacterCollection from './character-collection';
+import {useDisplayPreferences} from './display-preferences';
 import {CastCover} from './character-gallery';
 import {characterImage,characterAge,scriptedSpeaker} from './lib/simulation-dialogue';
 import {portraitImageProps} from './lib/portrait-images';
@@ -32,7 +33,7 @@ export default function StudioApp(){
  const [view,setView]=useState<View>('discover'),[state,setState]=useState<State>(initial),[loading,setLoading]=useState(true),[error,setError]=useState(''),[toast,setToast]=useState(''),[busy,setBusy]=useState(false),[query,setQuery]=useState(''),[genre,setGenre]=useState('전체'),[audience,setAudience]=useState('전체'),[detail,setDetail]=useState<Work|null>(null),[opening,setOpening]=useState(0),[draft,setDraft]=useState<Work>(blankWork()),[step,setStep]=useState(0),[archived,setArchived]=useState(false),[wallet,setWallet]=useState(false),[session,setSession]=useState<any>(null),[messages,setMessages]=useState<any[]>([]),[input,setInput]=useState(''),[resetAsk,setResetAsk]=useState(false),[prompt,setPrompt]=useState('비가 내리는 밤의 기억 도서관, 따뜻한 스탠드 조명, 창밖의 푸른 빛, 영화 같은 장면'),[ratio,setRatio]=useState('2:3'),[count,setCount]=useState(1),[sample,setSample]=useState(0),[assetConfirm,setAssetConfirm]=useState(false),[assetResult,setAssetResult]=useState<any>(null),[studioReturn,setStudioReturn]=useState(false);
  const [attendanceOpen,setAttendanceOpen]=useState(false);
  const [studioTab,setStudioTab]=useState('collected');
- const [displayFont,setDisplayFont]=useState(17),[displayArt,setDisplayArt]=useState(true);
+ const {font:displayFont,art:displayArt,setFont:setDisplayFont,setArt:setDisplayArt}=useDisplayPreferences(setError);
  const [sort,setSort]=useState('추천'),[unlocks,setUnlocks]=useState<any[]>([]),[memory,setMemory]=useState<any>(null),[storyStatus,setStoryStatus]=useState<any>(null),[settingsOpen,setSettingsOpen]=useState(false),[settingsDirty,setSettingsDirty]=useState(false),[agePending,setAgePending]=useState<any>(null);
  const [launch,setLaunch]=useState<any>(null),[selectedPersona,setSelectedPersona]=useState(''),[launchTitle,setLaunchTitle]=useState(''),[branch,setBranch]=useState<any>(null),[branchTitle,setBranchTitle]=useState(''),[previewOpening,setPreviewOpening]=useState(0),[editReady,setEditReady]=useState(true);
  const [assetsOpen,setAssetsOpen]=useState(false),[bookmarks,setBookmarks]=useState<any[]>([]),[selectedArt,setSelectedArt]=useState('cover'),[artReveal,setArtReveal]=useState(0),[messageDialog,setMessageDialog]=useState<any>(null),[sourceHash,setSourceHash]=useState(''),[highlightMessage,setHighlightMessage]=useState('');

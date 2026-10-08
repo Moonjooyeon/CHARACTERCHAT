@@ -18,10 +18,12 @@ for(const url of inventory){assert(!/\.(env|map|db|sqlite|sql|ts|tsx)$/.test(url
 assert.equal(works.filter(w=>w.kind==='simulation').length,3);assert.equal(works.find(w=>w.id==='sample-sim-monstergirl-dorm').characters.find(c=>c.id==='ruby-06').portrait,'/images/simulations/ruby-portrait-pending.svg');
 assert.equal(file('dist/discovery-design.css'),readFileSync(new URL('../../app/app/discovery-design.css',import.meta.url),'utf8'));
 const app=file('dist/app.js'),catalog=file('dist/catalog.js'),css=file('dist/styles.css'),html=file('dist/index.html');
-for(const source of [app,catalog,css,file('dist/discovery-design.css'),file('dist/portraits.js'),file('dist/viewport.js'),file('dist/viewport.css')]){assert(!/\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|indexedDB)\s*[.(]/.test(source));assert(!/document\.cookie/.test(source));assert(!/https?:\/\//.test(source))}
+for(const source of [app,catalog,css,file('dist/discovery-design.css'),file('dist/portraits.js'),file('dist/viewport.js'),file('dist/viewport.css')]){assert(!/\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|sessionStorage|indexedDB)\s*[.(]/.test(source));assert(!/document\.cookie/.test(source));assert(!/https?:\/\//.test(source))}
 assert(!/@import|url\(/.test(css));assert.match(css,/inset:9px 9px auto auto;width:max-content;height:auto/);assert.match(html,/noindex,nofollow/);assert.match(html,/connect-src 'none'/);assert.match(app,/샘플 대화 · AI가 생성한 답변이 아니에요/);assert.match(app,/실제 청구 ₩0/);assert.match(app,/disabled aria-label="스냅샷 생성 · 준비 중"/);
 const manifest=JSON.parse(file('.openai/hosting.json'));assert.deepEqual(Object.keys(manifest).sort(),['static']);assert.equal(manifest.static.directory,'dist');
 execFileSync(process.execPath,['--check',new URL('../dist/app.js',import.meta.url).pathname]);execFileSync(process.execPath,['--check',new URL('../dist/catalog.js',import.meta.url).pathname]);
 for(const name of ['portraits.js','viewport.js'])execFileSync(process.execPath,['--check',new URL('../dist/'+name,import.meta.url).pathname]);
 assert.match(file('dist/__viewport.html'),/connect-src 'none'/);assert.match(file('dist/__viewport.html'),/noindex,nofollow/);
-console.log(JSON.stringify({checks:'PASS',catalog:works.length,portraits,placeholders,public_files:inventory.length,network_clients:0,bindings:0,storage:'memory only',project_id:manifest.project_id},null,2));
+console.log(JSON.stringify({checks:'PASS',catalog:works.length,portraits,placeholders,public_files:inventory.length,network_clients:0,bindings:0,storage:'display preferences only; content in memory',project_id:manifest.project_id},null,2));
+
+assert.equal((app.match(/localStorage\.getItem\(/g)||[]).length,1);assert.equal((app.match(/localStorage\.setItem\(/g)||[]).length,1);assert(app.includes("JSON.stringify({font:state.font,art:state.art})"));
