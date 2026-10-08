@@ -234,3 +234,4 @@ dialog::backdrop { background: #0009; backdrop-filter: none; }
 /* Keep faces in frame in the wide featured banner. */
 .featured-art>img.featured-character{object-position:50% 0%}
 .credit-sources{display:flex;gap:12px;flex-wrap:wrap;padding:14px 0 20px;border-bottom:1px solid #363438;margin-bottom:20px;color:#aaa5ad;font-size:12px}.credit-sources span{display:flex;gap:8px}.credit-sources b{color:#eee}.demo-package:hover{border-color:#e9a6b0;background:#30232a}.wallet-balance strong{font-size:36px;letter-spacing:-1px}
+.credit-methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.credit-methods label{display:flex;align-items:center;gap:10px;border:1px solid #494349;border-radius:8px;padding:18px 12px;cursor:pointer}.credit-methods label:has(input:checked){border-color:#e4a1ad;background:#38262c}.credit-methods input{accent-color:#e4a1ad}
